@@ -7,14 +7,15 @@ fn main() {
     let GM = 1f64;
     let r = 4f64;
     let T = 1e+2;
+    let n = 10;
 
-    let v = Uniform(0.9, 1.1);
-    let r_vec = v.sample(5).fmap(|x| x * r);
+    let v = Uniform(0.95, 1.05);
+    let r_vec = v.sample(n).fmap(|x| x * r);
     let T_vec = r_vec.fmap(|x| (x / r).powf(3f64/2f64) * T);
 
     let u = Uniform(0f64, 2f64 * PI);
-    let thetas = u.sample(5);
-    let phis = u.sample(5);
+    let thetas = u.sample(n);
+    let phis = u.sample(n);
 
     let mut df = DataFrame::new(vec![]);
 
